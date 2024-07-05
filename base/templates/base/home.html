@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #outdiv{
+        display: grid;
+        grid-template-columns:  1fr 1fr;
+    }
+
+</style>
+
+<body>
+{% include  'base/navebar.html' %}
+
+    <div id="outdiv">
+        <div>
+            <h1>Browse Recepie</h1>
+            <form action="">
+                <input type="text" placeholder="Browse for a recipe" name="q">
+            </form>
+            <br>
+            <div>
+                {% for recipe in all_recipes %}
+                    <a href="{% url 'cook' recipe.id %}">{{recipe.title}}</a>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <h1>Recent Recepies</h1>
+            <hr>
+            {% for recipe in recent_Recipies %}
+                <a href="{% url 'cook' recipe.id %}">{{recipe.title}}</a>
+                <hr>
+            {% endfor %}
+           
+        </div>
+    </div>
+
+</body>
+</html>
